@@ -8,7 +8,7 @@
 
 
 /**
- * 攻撃力が防御力や防御力貫通によってどのようなダメージになるのかを計算する関数
+ * ダメージが防御力や防御力貫通によってどのようなダメージになるのかを計算する関数
  * 
  * 負の入力値があった場合には0として扱い、2000以上の入力値は2000として扱う。
  * 実効防御力は、防御力 - 防御力貫通 で定義され、
@@ -24,7 +24,7 @@
 function effectiveDamage(power, armor, armorPenetration) {
   let effectiveArmor = normalize(armor) - normalize(armorPenetration);
   effectiveArmor = effectiveArmor <= 0 ? 0 : effectiveArmor;
-  let damageDecrease = effectiveArmor / (100 + effectiveArmor);
+  const damageDecrease = effectiveArmor / (100 + effectiveArmor);
   return Math.round(normalize(power) * (1 - damageDecrease));
 }
 
@@ -46,6 +46,7 @@ function normalize(n) {
 module.exports = {
   effectiveDamage: effectiveDamage
 };
+
 
 /***/ })
 /******/ 	]);
@@ -125,8 +126,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var root = document.getElementById('root');
-root.innerHTML = '<p>攻撃力 100, 防御 50, 防御貫通 30 のダメージは、' + damage_calc__WEBPACK_IMPORTED_MODULE_0___default().effectiveDamage(100, 50, 30) + '</p>';
+var root = document.getElementById("root");
+root.innerHTML = "<p>攻撃力 100, 防御 50, 防御貫通 30 のダメージは、" + damage_calc__WEBPACK_IMPORTED_MODULE_0___default().effectiveDamage(100, 50, 30) + "</p>";
 })();
 
 /******/ })()
